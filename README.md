@@ -1,5 +1,8 @@
 # IoT Telemetry API
 
+[![CI](https://github.com/Devz1505/iot-telemetry-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Devz1505/iot-telemetry-api/actions/workflows/ci.yml)
+[![Firmware](https://github.com/Devz1505/iot-telemetry-api/actions/workflows/firmware.yml/badge.svg)](https://github.com/Devz1505/iot-telemetry-api/actions/workflows/firmware.yml)
+
 A Spring Boot REST backend that collects sensor readings from ESP32 boards,
 stores them in a SQL database, checks them against per-device threshold rules,
 and raises alerts. A small JavaScript dashboard plots the data live.
