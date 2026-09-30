@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IoT Telemetry</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>IoT Telemetry</h1>
+    <span id="health" class="health" role="status">checking API…</span>
+  </header>
+
+  <main>
+    <section class="filters" aria-label="Filters">
+      <label>Device
+        <select id="device"></select>
+      </label>
+      <label>Sensor
+        <select id="sensor">
+          <option>TEMPERATURE</option>
+          <option>HUMIDITY</option>
+          <option>PRESSURE</option>
+          <option>LIGHT</option>
+          <option>VOLTAGE</option>
+        </select>
+      </label>
+      <label>Window
+        <select id="window">
+          <option value="1">Last 1 hour</option>
+          <option value="6">Last 6 hours</option>
+          <option value="24" selected>Last 24 hours</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="tiles" aria-label="Summary">
+      <div class="tile"><span class="tile-label">Latest</span><span id="stat-latest" class="tile-value">–</span></div>
+      <div class="tile"><span class="tile-label">Min</span><span id="stat-min" class="tile-value">–</span></div>
+      <div class="tile"><span class="tile-label">Max</span><span id="stat-max" class="tile-value">–</span></div>
+      <div class="tile"><span class="tile-label">Average</span><span id="stat-avg" class="tile-value">–</span></div>
+      <div class="tile"><span class="tile-label">Readings</span><span id="stat-count" class="tile-value">–</span></div>
+    </section>
+
+    <section class="card">
+      <h2 id="chart-title">Readings</h2>
+      <div class="chart-box"><canvas id="chart" aria-label="Line chart of readings over time"></canvas></div>
+      <p id="empty" class="empty" hidden>No readings in this window yet. Start the simulator or your ESP32.</p>
+      <details>
+        <summary>Show as table</summary>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Recorded at</th><th class="num">Value</th></tr></thead>
+          <tbody id="readings-table"></tbody>
+        </table></div>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2>Open alerts</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Time</th><th>Device</th><th>Message</th><th></th></tr></thead>
+        <tbody id="alerts-table"></tbody>
+      </table></div>
+      <p id="no-alerts" class="empty" hidden>No open alerts.</p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
